@@ -55,8 +55,7 @@ jobs:
           command: heroku container:release web -a $HEROKU_APP_NAME
       - run:
           name: database setup
-          command: heroku run bundle exec rake db:migrate
-          RAILS_ENV=production -a $HEROKU_APP_NAME
+          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
 
 workflows:
   build_test_and_deploy:
@@ -64,7 +63,7 @@ workflows:
       - build
       - test:
           requires:
-          - build
+            - build
       - deploy:
           requires:
             - build
