@@ -7,6 +7,9 @@ jobs:
       - image: cimg/ruby:3.0.2
     working_directory: ~/rails-docker-yoshizawa/src
     steps:
+      - run:
+          name: "Create working directory"
+          command: sudo mkdir -p ~/rails-docker-yoshizawa/src && sudo chown -R circleci:circleci ~/rails-docker-yoshizawa/src
       - checkout:
           path: ~/rails-docker-yoshizawa
       - ruby/install-deps  
